@@ -74,8 +74,8 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL(Flow , Delta , Packet) 규격 A
       ```
       
         *  export PATH=$PATH:/home/kbell/nif_avro_verificater_install_path/go/bin/
-        *  export GO_ROOT=/home/kbell/nif_avro_verificater_install_path/go
-        *  export GO_PATH=/home/kbell/nif_avro_verificater_install_path/go/pkg/go_path
+        *  export GOROOT=/home/kbell/nif_avro_verificater_install_path/go
+        *  export GOPATH=/home/kbell/nif_avro_verificater_install_path/go/pkg/go_path
        
       ```
       * 참고 *
@@ -85,9 +85,9 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL(Flow , Delta , Packet) 규격 A
       #export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64/bin/
       #export GOROOT=/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64
       #export GOPATH=/home/esk1223/env_default_pkg/go/pkg/go_path
-      export PATH=$PATH:/snap/bin:/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64/bin/
-      export GOROOT=/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64
-      export GOPATH=/home/esk1223/env_default_pkg/go/pkg/go_path
+      export PATH=$PATH:/home/kbell/nif_avro_verificater_install_path/go/bin/
+      export GOROOT=/home/kbell/nif_avro_verificater_install_path/go
+      export GOPATH=/home/kbell/nif_avro_verificater_install_path/go/pkg/go_path
       ... (중략)
       -->  위와 같이 0_get_gopkgs.sh , 1_src_run.sh , 2_bin_run.sh , 2_binary_build.sh 의 경로를 수정 후 저장
       ######################################################################################################
