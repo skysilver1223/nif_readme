@@ -1,4 +1,4 @@
-# 원시 데이터 정확성 검증 프로그램(nif_avro_verificater) README
+# 원시 데이터 정확성 검증 프로그램(nif_avro_verificater)
 
 
 ## 목적(용도)
