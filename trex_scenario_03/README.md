@@ -139,7 +139,7 @@ tcp 트래픽(재전송 포함 - packet index(11)) template 기반 주요 데이
     # 2 - 모든 방향으로 모든 MAC를 교체
 
     cap_info :
-       - name: /home/kbell/src_kbell/scenario_01/pcap_template/kbell_tcp_sample_1.pcap
+       - name: /home/kbell/src_kbell/scenario_03/pcap_template/kbell_tcpretrans_sample_1.pcap
          # 템플릿 pcap 파일
 
          cps : 1
