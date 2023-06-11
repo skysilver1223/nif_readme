@@ -144,9 +144,79 @@ tcp 트래픽 template 기반 주요 데이터 규격 검증
     ```
     
   *  template.yaml 주요 옵션 상세
-    *  
-  *  config.csv 주요 옵션 상세
+  ```
+    - duration : 30.0
+    # 테스트 기간(초)
 
+    generator :
+    # 템플릿 기반 트래픽 생성 정보
+            distribution : "seq"
+            clients_start : "16.0.0.1"
+            clients_end   : "16.0.0.255"
+            servers_start : "48.0.0.1"
+            servers_end   : "48.0.255.255"
+            clients_per_gb : 201 # Deprecated
+            min_clients    : 101 # Deprecated
+            dual_port_mask : "1.0.0.0"
+            tcp_aging      : 0  # 흐름할당 취소 시간
+            udp_aging      : 0 # 흐름할당 취소 시간
+
+    cap_ipg    : false
+    # ipg(Interpacket gap) : https://en.wikipedia.org/wiki/Interpacket_gap
+    # true는 IPG가 cap 파일에서 가져온 것
+    # false는 IPG가 템플릿 섹션별로 가져온 것
+
+    cap_ipg_min    : 10
+    #(if (pkt_ipg<cap_ipg_min) { pkt_ipg=cap_override_ipg} )
+
+    cap_override_ipg    : 100
+    # Value to override (microseconds)
+
+    mac_override_by_ip : 0
+    # 0, (legacy value: false) - 포트 구성/ARP 쿼리에서 MAC
+    # 1, (legacy value: true) - 클라이언트에서 보낸 패킷의 소스 MAC
+    # 2 - 모든 방향으로 모든 MAC를 교체
+
+    cap_info :
+       - name: /home/kbell/src_kbell/scenario_01/pcap_template/kbell_tcp_sample_1.pcap
+         # 템플릿 pcap 파일
+
+         cps : 1
+         #초당 연결 수
+
+         ipg : 10000
+         #cap_ipg : false가 포함된 경우 , 패킷 간 간격을 마이크로초 단위로 설정
+
+         rtt : 10000
+         # ipg와 동일한 값으로 설정 (microseconds).
+
+         w   : 1
+         # Default value: w=1.
+         # IP 생성기에 흐름을 생성하는 방법.
+         # 만일 w=2, 동일한 템플릿의 두 흐름이 버스트에 생성됩니다 
+
+         keep_src_port: false
+         # 원래 TCP/UDP 소스 포트 사용 여부
+
+  ```
+    
+  *  config.csv 주요 옵션 상세
+  ```
+  csv 설정값 별 옵션 정보
+  thread_num : t-rex-6 의 '-c' option
+  multiplier_num : t-rex-6 의 '-m' option
+  duration : t-rex-6 의 '-d' option
+  active_flows: t-rex-6 의 '--active-flows' option
+  learn_mode : t-rex-6 의 '--learn-mod' option
+  
+  -> csv 각 라인 단위 별 설정값을 기반으로 trex 구동
+  
+  ex)
+  thread_num,multiplier_num,duration,active_flows,learn_mode
+  1,1,60,10000,3
+  
+  ```
+  
   *  실행
   ```
   $ ./run.sh
