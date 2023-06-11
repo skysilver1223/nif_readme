@@ -32,16 +32,6 @@ udp 트래픽 template 기반 주요 데이터 규격 검증
     ||payload_size_square_sum|0|
     ||payload_size_min|0|
     ||payload_size_max|0|
-    |syn|count|0|
-    |ack|count|0|
-    |syn ack|count|0|
-    |psh|count|0|
-    |psh ack|count|0|
-    |rst|count|0|
-    |rst ack|count|0|
-    |fin|count|0|
-    |fin ack|count|0|
-    |rt|count|0|
 
   * flow #2
 
@@ -71,16 +61,6 @@ udp 트래픽 template 기반 주요 데이터 규격 검증
     ||payload_size_square_sum|0|
     ||payload_size_min|0|
     ||payload_size_max|0|
-    |syn|count|0|
-    |ack|count|0|
-    |syn ack|count|0|
-    |psh|count|0|
-    |psh ack|count|0|
-    |rst|count|0|
-    |rst ack|count|0|
-    |fin|count|0|
-    |fin ack|count|0|
-    |rt|count|0|
 
 ## 규격별 주요 검증 필드
 
