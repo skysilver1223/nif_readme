@@ -1,10 +1,13 @@
-# 검증용 Avro 파일 생성 프로그램(nif_pcap_verificater)
+# 검증용 Avro 파일 생성 프로그램
 
 ## 목적(용도)
 Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는 프로그램
 
 ## 메뉴얼
 
+- 프로젝트 명
+  * nif_pcap_verificater
+  
 - 개발환경
 
   * OS : Ubuntu 20.04
