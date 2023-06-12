@@ -1,4 +1,4 @@
-# 원시 데이터 정확성 검증 프로그램(nif_avro_verificater)
+# 원시 데이터 정확성 검증 프로그램
 
 
 ## 목적(용도)
@@ -7,6 +7,9 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
 
 ## 메뉴얼
 
+- 프로젝트 명
+  * nif_avro_verificater
+  
 - 개발환경
 
   * OS : Ubuntu 20.04
