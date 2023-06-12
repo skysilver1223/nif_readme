@@ -188,6 +188,7 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
         ```
 
      * 실행
+     
        *  실행 방법은 2가지 종류를 제공
 
        *  인터프리터 방식
@@ -210,4 +211,19 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
        $ ./2_bin_run_background.sh stop
        ```  
        
-   - 결과확인
+   * 결과확인
+   
+     * 결과 AVRO 파일은 config에서 정의한 project_info.res_file_dir_path 경로에 저장되며, 연동규격(원시 데이터, 단위시간 원시 데이터, 패킷 원시 데이터) 별로 파일명이 다르게 생성.
+
+     * 파일명 규칙
+       * 원시 데이터 : kb_r--$pcap_파일명--$delta_seq_num.avro
+       * 단위시간 원시 데이터 : kb_d--$pcap_파일명--$delta_seq_num.avro
+       * 패킷 원시 데이터 : kb_p--$pcap_파일명--$delta_seq_num.avro
+    
+         * 참고) $delta_seq_num는 delta 파일 생성 조건 횟수
+         ```
+         ex) pcap 시간 범위 : 2023-01-01 00:00:00 - 2023-01-01 00:01:00
+             delta : 10s
+             delta_seq_num = 0 (2023-01-01 00:00:00 ~ 2023-01-01 00:00:10)
+             delta_seq_num = 1 (2023-01-01 00:00:10 ~ 2023-01-01 00:00:20)
+         ```
