@@ -3,7 +3,7 @@
 ## 목적(용도)
 Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는 프로그램
 
-## 구성 메뉴얼
+## 메뉴얼
 
 - 개발환경
 
@@ -124,7 +124,7 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
       --> 0_create_go_mod.sh 에서 mod init 완료 후 0_get_gopkgs.sh를 수행하여 관련 패키지를 가져온다.
       ```
  
-   - 실행
+   - 설정 및 실행
  
     * config 설정
       ```
