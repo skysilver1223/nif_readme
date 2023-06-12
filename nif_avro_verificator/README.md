@@ -2,7 +2,7 @@
 
 
 ## 목적(용도)
-ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL(Flow , Delta , Packet) 규격 AVRO를 비교하여 결과를 출력하는 프로그램
+ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) AVRO를 비교하여 결과를 출력하는 프로그램
 
 
 ## 메뉴얼
@@ -96,43 +96,43 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL(Flow , Delta , Packet) 규격 A
       ```
       
     *  GO mod init 및 get pkgs
-      ```
-      $ ./0_create_go_mod.sh
-      ######################################################################################################
-      ========================================================
-      Project Path >>
-      : /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source
-      ========================================================
-      Clean module >>
-      file :  /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source/src/go.mod
-      ========================================================
-      Create module init(kbell) >>
-      go: creating new go.mod: module kbell
-      go: to add module requirements and sums:
-              go mod tidy
-      ========================================================
-      module show >>
-      file :  /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source/src/go.mod
-      module kbell
+       ```
+       $ ./0_create_go_mod.sh
+       ######################################################################################################
+       ========================================================
+       Project Path >>
+       : /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source
+       ========================================================
+       Clean module >>
+       file :  /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source/src/go.mod
+       ========================================================
+       Create module init(kbell) >>
+       go: creating new go.mod: module kbell
+       go: to add module requirements and sums:
+               go mod tidy
+       ========================================================
+       module show >>
+       file :  /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source/src/go.mod
+       module kbell
 
-      go 1.20
-      ========================================================
-      ========================================================
-      Project Path >>
-      : /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source
-      GOROOT >>
-      : /home/kbell/nif_avro_verificater_install_path/go
-      GOPATH >>
-      : /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source
-      ========================================================
-      Proejct Go Run (ver. interpreter) >>
-      go: finding module for package github.com/hamba/avro/ocf
-      go: finding module for package github.com/golang/snappy
-      ... (생략)
-      go: added github.com/rocketlaunchr/dataframe-go v0.0.0-20211025052708-a1030444159b
-      ######################################################################################################
-      --> 0_create_go_mod.sh 에서 mod init 완료 후 0_get_gopkgs.sh를 수행하여 관련 패키지를 가져온다.
-      ```
+       go 1.20
+       ========================================================
+       ========================================================
+       Project Path >>
+       : /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source
+       GOROOT >>
+       : /home/kbell/nif_avro_verificater_install_path/go
+       GOPATH >>
+       : /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source
+       ========================================================
+       Proejct Go Run (ver. interpreter) >>
+       go: finding module for package github.com/hamba/avro/ocf
+       go: finding module for package github.com/golang/snappy
+       ... (생략)
+       go: added github.com/rocketlaunchr/dataframe-go v0.0.0-20211025052708-a1030444159b
+       ######################################################################################################
+       --> 0_create_go_mod.sh 에서 mod init 완료 후 0_get_gopkgs.sh를 수행하여 관련 패키지를 가져온다.
+       ```
  
   - 설정 및 실행
  
