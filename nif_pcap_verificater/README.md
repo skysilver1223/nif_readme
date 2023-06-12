@@ -86,125 +86,128 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
       ```
       
     *  GO mod init 및 get pkgs
-      ```
-      $ ./0_create_go_mod.sh
-      ######################################################################################################
-      ========================================================
-      Project Path >>
-      : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
-      ========================================================
-      Clean module >>
-      file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
-      ========================================================
-      Create module init(kbell) >>
-      go: creating new go.mod: module kbell
-      go: to add module requirements and sums:
-              go mod tidy
-      ========================================================
-      module show >>
-      file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
-      module kbell
+    
+       ```
+       $ ./0_create_go_mod.sh
+       ######################################################################################################
+       ========================================================
+       Project Path >>
+       : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
+       ========================================================
+       Clean module >>
+       file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
+       ========================================================
+       Create module init(kbell) >>
+       go: creating new go.mod: module kbell
+       go: to add module requirements and sums:
+               go mod tidy
+       ========================================================
+       module show >>
+       file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
+       module kbell
 
-      go 1.20
-      ========================================================
-      ========================================================
-      Project Path >>
-      : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
-      GOROOT >>
-      : /home/kbell/nif_pcap_verificater_install_path/go
-      GOPATH >>
-      : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
-      ========================================================
-      Proejct Go Run (ver. interpreter) >>
-      go: finding module for package github.com/golang/snappy
-      go: finding module for package gopkg.in/natefinch/lumberjack.v2
-      ... (생략)
-      go: added github.com/elodina/go-avro v0.0.0-20160406082632-0c8185d9a3ba
-      ######################################################################################################
-      --> 0_create_go_mod.sh 에서 mod init 완료 후 0_get_gopkgs.sh를 수행하여 관련 패키지를 가져온다.
-      ```
+       go 1.20
+       ========================================================
+       ========================================================
+       Project Path >>
+       : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
+       GOROOT >>
+       : /home/kbell/nif_pcap_verificater_install_path/go
+       GOPATH >>
+       : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
+       ========================================================
+       Proejct Go Run (ver. interpreter) >>
+       go: finding module for package github.com/golang/snappy
+       go: finding module for package gopkg.in/natefinch/lumberjack.v2
+       ... (생략)
+       go: added github.com/elodina/go-avro v0.0.0-20160406082632-0c8185d9a3ba
+       ######################################################################################################
+       --> 0_create_go_mod.sh 에서 mod init 완료 후 0_get_gopkgs.sh를 수행하여 관련 패키지를 가져온다.
+       ```
  
    - 설정 및 실행
  
-    * config 설정
-      ```
-      $ cd nif_pcap_verificater/go_source/config
-      ```
-     * config 옵션 상세
+     * config 설정
        ```
-       project_info :
-
-         res_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verificater/pcap_results"
-         # pcap 분석 결과 생성 디렉토리
-
-         pcap_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verificater/pcap_samples"
-         # 분석대상 pcap 디렉토리
-
-         enable_snappy : false
-         # kbell Avro 연동 규격 압축 사용 여부 옵션
-         # 종류 : true , false
-         # * true : snappy로 압축된 kbell Avro 파일을 사용하는 경우
-         # * false : snappy로 압축된 kbell Avro 파일을 사용하지 않는 경우
-
-       flow_info :
-
-           last_packet_time_out_sec : 10
-           # 마지막 패킷 수신 수 타임아웃 시간
-
-           last_flag_time_out_sec : 15
-           # 마지막 플래그( fin , rst) 수신 후 타임아웃 시간
-
-
-       nif_info :
-
-           min_flow_start_time : "2023-02-08 12:54:00"
-           #flow 최소 시작 시간
-           # ex) 2020-01-24 09:43:42 , 2020-01-24 09:43:42.000000000
-
-           delta_start_time : "2023-02-08 12:54:00"
-           #delta 시작 시간
-           # ex) 2020-01-24 09:43:42 , 2020-01-24 09:43:42.000000000
-
-           delta_sec : 10
-           #delta 조건(s)
-
-           enable_multi_pcap_flow : true
-           #다중 pcap 사용관리 옵션
-           # * true  : pcap_list_info의 pcap을 여러개의 별도 pcap으로 인식
-           # * false : pcap_list_info의 pcap을 단일 pcap으로 인식
-
-       pcap_list_info :
-
-         # 분석 대상 pcap 리스트
-         # * pcap_fname : pcap_file_dir_path 디렉토리 내 분석 대상 pcap 파일
-         # * use_flag : 분석 여부 ( true : 분석 , false : 미분석 )
-         - pcap_fname: "test_udp.pcap"
-           use_flag: false
-         - pcap_fname: "kbell_tcp_sample.pcap"
-           use_flag: true
-         - pcap_fname: "cap230509d.pcap"
-           use_flag: false       
+       $ cd nif_pcap_verificater/go_source/config
        ```
+      * config 옵션 상세
+        ```
+        project_info :
+
+          res_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verificater/pcap_results"
+          # pcap 분석 결과 생성 디렉토리
+
+          pcap_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verificater/pcap_samples"
+          # 분석대상 pcap 디렉토리
+
+          enable_snappy : false
+          # kbell Avro 연동 규격 압축 사용 여부 옵션
+          # 종류 : true , false
+          # * true : snappy로 압축된 kbell Avro 파일을 사용하는 경우
+          # * false : snappy로 압축된 kbell Avro 파일을 사용하지 않는 경우
+
+        flow_info :
+
+            last_packet_time_out_sec : 10
+            # 마지막 패킷 수신 수 타임아웃 시간
+
+            last_flag_time_out_sec : 15
+            # 마지막 플래그( fin , rst) 수신 후 타임아웃 시간
+
+
+        nif_info :
+
+            min_flow_start_time : "2023-02-08 12:54:00"
+            #flow 최소 시작 시간
+            # ex) 2020-01-24 09:43:42 , 2020-01-24 09:43:42.000000000
+
+            delta_start_time : "2023-02-08 12:54:00"
+            #delta 시작 시간
+            # ex) 2020-01-24 09:43:42 , 2020-01-24 09:43:42.000000000
+
+            delta_sec : 10
+            #delta 조건(s)
+
+            enable_multi_pcap_flow : true
+            #다중 pcap 사용관리 옵션
+            # * true  : pcap_list_info의 pcap을 여러개의 별도 pcap으로 인식
+            # * false : pcap_list_info의 pcap을 단일 pcap으로 인식
+
+        pcap_list_info :
+
+          # 분석 대상 pcap 리스트
+          # * pcap_fname : pcap_file_dir_path 디렉토리 내 분석 대상 pcap 파일
+          # * use_flag : 분석 여부 ( true : 분석 , false : 미분석 )
+          - pcap_fname: "test_udp.pcap"
+            use_flag: false
+          - pcap_fname: "kbell_tcp_sample.pcap"
+            use_flag: true
+          - pcap_fname: "cap230509d.pcap"
+            use_flag: false       
+        ```
+
+     * 실행
+       *  실행 방법은 2가지 종류를 제공
+
+       *  인터프리터 방식
+       ```
+       $ cd nif_pcap_verificater/go_source/bin/
+       $ ./1_src_run.sh
+       ```
+
+       * 컴파일러 방식
+       ```
+       $ cd nif_pcap_verificater/go_source/bin/
+
+       # 소스 빌드
+       $ ./2_binary_build.sh
+
+       # 백그라운드 실행
+       $ ./2_bin_run_background.sh start
+
+       # 정지
+       $ ./2_bin_run_background.sh stop
+       ```  
        
-    * 실행
-      *  실행 방법은 2가지 종류를 제공
-      
-      *  인터프리터 방식
-      ```
-      $ cd nif_pcap_verificater/go_source/bin/
-      $ ./1_src_run.sh
-      ```
-      
-      * 컴파일러 방식
-      ```
-      $ cd nif_pcap_verificater/go_source/bin/
-      
-      # 소스 빌드
-      $ ./2_binary_build.sh
-      
-      # 백그라운드 실행
-      $ ./2_bin_run_background.sh start
-      
-      # 정지
-      $ ./2_bin_run_background.sh stop
-      ```       
+   - 결과확인
