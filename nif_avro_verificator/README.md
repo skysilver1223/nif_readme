@@ -5,7 +5,7 @@
 ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) AVRO를 비교하여 결과를 출력하는 프로그램
 
 
-## 메뉴얼
+## 매뉴얼
 
 - 프로젝트 명
   * nif_avro_verificater
