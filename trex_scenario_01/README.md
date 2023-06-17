@@ -8,6 +8,7 @@ tcp 트래픽  기반 주요 데이터 규격 검증
   * flow 정보 (sc1_flow_1.pcap)
 
     |category|info|value|
+    |--------|----|-----|
     |ipv||4|
     |protocol||6|
     |east_info|east_port|59496|
