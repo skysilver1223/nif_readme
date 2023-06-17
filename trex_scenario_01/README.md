@@ -110,15 +110,15 @@ tcp 트래픽  기반 주요 데이터 규격 검증
       *  trex> start -f $py_dir/scenario_astf.py -m 1 -d 100 -t pcap_file=flow_1.pcap|flow_1.pcap,rexmtthresh=x,no_delay=x,no_delay_counter=x,initwnd=x,rampup_sec=x,cps=x,dport=x
         
     *  옵션(-t) 설명
-      * --pcap_files : 트래픽 생성 탬플릿 리스트
-      * --rexmtthresh : 재전송을 트리거하기 위한 중복 ack 수
-      * --no_delay :  2 bits: LSB - Nagle Algorithm (0 - Enabled, 1 - Disabled). MSB - Force Push (FP) (0 - Disabled, 1 - Enabled)
-      * --delay_ack_msec : 지연 확인 시간 초과(msec)
-      * --no_delay_counter : ack이 전송될 때까지 기다리는 recv 바이트 수입니다.
-      * --initwnd : init window 값(MSS 단위)
-      * --rampup_sec : 스케줄러 상승 시간(초)
-      * --cps : connection per second
-      * --dport : dst port
+       * --pcap_files : 트래픽 생성 탬플릿 리스트
+       * --rexmtthresh : 재전송을 트리거하기 위한 중복 ack 수
+       * --no_delay :  2 bits: LSB - Nagle Algorithm (0 - Enabled, 1 - Disabled). MSB - Force Push (FP) (0 - Disabled, 1 - Enabled)
+       * --delay_ack_msec : 지연 확인 시간 초과(msec)
+       * --no_delay_counter : ack이 전송될 때까지 기다리는 recv 바이트 수입니다.
+       * --initwnd : init window 값(MSS 단위)
+       * --rampup_sec : 스케줄러 상승 시간(초)
+       * --cps : connection per second
+       * --dport : dst port
      
   *  실행
   ```
