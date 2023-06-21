@@ -28,7 +28,7 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
   └─pcap_samples : 분석대상 pcap 파일 관리 디렉토리 ( 참고용 디렉토리 , Config에서 변경가능)
   ```
   
-- 설치
+- 설치 및 실행
 
     * 참고 
       * 소프트웨어 패키지 및 GO 설치경로는 아래의 경로에서 설치하는 것으로 가정하여 문서를 작성
