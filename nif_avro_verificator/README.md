@@ -39,7 +39,7 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
       └─src : 프로그램 소스 관리 디렉토리
   ```     
   
- - 설치
+ - 설치 및 실행
  
     * 참고 
       * 소프트웨어 패키지 및 GO 설치경로는 아래의 경로에서 설치하는 것으로 가정하여 문서를 작성
