@@ -200,6 +200,51 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
       |psh-ack|count|0|    
                 
   * flow 별 active time 정보
+    * sc3_tcp_flow_1.pcap
+    
+      |s_delay_sec|flow active time(sec)|
+      |-----------|---------------------|
+      |10|5|
+      |20|10|
+      |40|20|
+
+    * sc3_tcp_flow_2.pcap
+      
+      |s_delay_sec|flow active time(sec)|
+      |-----------|---------------------|
+      |10|10|
+      |20|20|
+      |40|40|
+      
+    * sc3_tcp_flow_3.pcap
+      
+      |s_delay_sec|flow active time(sec)|
+      |-----------|---------------------|
+      |10|15|
+      |20|30|
+      |40|60|
+      
+    * sc3_udp_flow_1.pcap
+      
+      |s_delay_sec|flow active time(sec)|
+      |-----------|---------------------|
+      |10|5|
+      |20|10| 
+      |40|20|
+
+    * sc3_udp_flow_2.pcap      
+      |s_delay_sec|flow active time(sec)|
+      |-----------|---------------------|
+      |10|10|
+      |20|20|
+      |40|40|     
+      
+    * sc3_udp_flow_3.pcap      
+      |s_delay_sec|flow active time(sec)|
+      |-----------|---------------------|
+      |10|15|
+      |20|30|
+      |40|60|     
     
 ## 규격별 주요 검증 필드
 
@@ -246,7 +291,7 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
       * tcp_attrs
         * tcp_len, tcp_hdr_len, tcp_seq, tcp_ack, tcp_flags_ns, tcp_flags_cwr, tcp_flags_ecn, tcp_flags_urg, tcp_flags_ack, tcp_flags_push, tcp_flags_reset, tcp_flags_syn, tcp_flags_fin, tcp_window_size
       * udp_attrs
-        * none ( UDP 템플릿 X )
+        * udp_length
       * payload_attrs
         * payload
   
@@ -276,6 +321,8 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
        * --rampup_sec : 스케줄러 상승 시간(초)
        * --cps : connection per second
        * --dport : dst port
+       * --s_delay_sec : 서버 딜레이 명령
+       * --ipv6_mode : ip range를 ipv6로 변
      
   *  실행
   ```
@@ -284,26 +331,31 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
   ```
 
   * 결과데이터 설명
-    * -m 1 -d 50 옵션을 고정으로 사용하는 배치
-    * sc1_flow_1.pcap 탬플릿 플로우 기반으로 49개의 플로우를 생성
-    * 트래픽 생성시간( 2023. 06. 17. (토) 19:28:57 ~ 2023. 06. 17. (토) 19:29:55) 동안의 트래픽을 캡쳐하여 검증에 수행
+    * -m 1 -d 100 옵션을 고정으로 사용하는 배치
+    * 각 탬플릿 플로우 기반으로 49개의 플로우를 생성
+    * 트래픽 생성시간( 2023-07-06 18:24:26 ~ 2023-07-06 18:26:28) 동안의 트래픽을 캡쳐하여 검증에 수행
   ```
   ######################################################################################################
-  ================================================================== ( 트래픽 생성 시나리오 시작 )
-  START( 2023. 06. 17. (토) 19:28:57 KST ) >>> 
-   Scenario 1 ( = /home/kbell/src_kbell/scen_01/batch/s1_batch.txt)  (시나리오 s1_batch.txt 배치파일 정보 , 배치 순서대로 구동)
-   Profile ( = 100)                                                  (시나리오 프로파일 ID)
+  ==================================================================
+  START( 2023-07-06 18:24:26 ) >>>
+   Scenario 3 ( = /home/kbell/src_kbell/scen_03/batch/s3_batch.txt)
+   Profile ( = 300)
   ==================================================================
   
   Executing line 1 : 'reset'
-  Executing line 2 : 'start -f /home/kbell/src_kbell/scen_01/py/scenario_astf.py -m 1 -d 50 --pid 100 -t pcap_file="/home/kbell/src_kbell/scen_01/template/sc1_flow_1.pcap"'
-  Executing line 3 : 'quit'
-  Batch Running... /                                                  ( 트래픽 생성 동안 로딩 )
+  Executing line 2 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 305 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_tcp_flow_1.pcap",cps=1,s_delay_sec=10,dport=8081'
+  Executing line 3 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 304 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_tcp_flow_2.pcap",cps=1,s_delay_sec=10,dport=8082'
+  Executing line 4 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 303 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_tcp_flow_3.pcap",cps=1,s_delay_sec=10,dport=8083'
+  Executing line 5 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 302 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_udp_flow_1.pcap",cps=1,s_delay_sec=10,dport=8084'
+  Executing line 6 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 301 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_udp_flow_2.pcap",cps=1,s_delay_sec=10,dport=8085'
+  Executing line 7 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 300 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_udp_flow_3.pcap",cps=1,s_delay_sec=10,dport=8086'
+  Executing line 8 : 'quit'
+  Batch Running... |
   
-  ================================================================== ( 트래픽 생성 시나리오 종료 )
-  END( 2023. 06. 17. (토) 19:29:55 KST ) >>>
-   Scenario 1 ( = /home/kbell/src_kbell/scen_01/batch/s1_batch.txt) scenario End
-   Profile ( = 100) End
-  ==================================================================  
+  ==================================================================
+  END( 2023-07-06 18:26:28 ) >>>
+   Scenario 3 ( = /home/kbell/src_kbell/scen_03/batch/s3_batch.txt) scenario End
+   Profile ( = 300) End
+==================================================================
   ######################################################################################################
   ```
