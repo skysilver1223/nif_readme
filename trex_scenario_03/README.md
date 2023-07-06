@@ -5,46 +5,201 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
 
 ## 탬플릿 정보
 
-  * flow 정보 (sc1_flow_1.pcap)
+  * flow 정보
+    
+    * sc3_tcp_flow_1.pcap
+      |category|info|value|
+      |--------|----|-----|
+      |ipv||4|
+      |protocol||6|
+      |east_info|
+      ||pkt_count|8|
+      ||pkt_size_sum|3536|
+      ||pkt_size_square_sum|2456968|
+      ||pkt_size_min|66|
+      ||pkt_size_max|996|
+      ||payload_pkt_count|5|
+      ||payload_size_sum|3000|
+      ||payload_size_square_sum|2025000|
+      ||payload_size_min|300|
+      ||payload_size_max|900|
+      |west_info|pkt_count|7|
+      ||pkt_size_sum|3486|
+      ||pkt_size_square_sum|2472796|
+      ||pkt_size_min|66|
+      ||pkt_size_max|970|
+      ||payload_pkt_count|5|
+      ||payload_size_sum|3016|
+      ||payload_size_square_sum|2043072|
+      ||payload_size_min|304|
+      ||payload_size_max|904|
+      |syn|count|1|
+      |ack|count|1|
+      |fin|count|2|
+      |syn-ack|count|1|
+      |psh-ack|count|10|
 
-    |category|info|value|
-    |--------|----|-----|
-    |ipv||4|
-    |protocol||6|
-    |east_info|east_port|59496|
-    ||pkt_count|5|
-    ||pkt_size_sum|498|
-    ||pkt_size_square_sum|56820|
-    ||pkt_size_min|66|
-    ||pkt_size_max|146|
-    ||payload_pkt_count|2|
-    ||payload_size_sum|160|
-    ||payload_size_square_sum|12800|
-    ||payload_size_min|80|
-    ||payload_size_max|80|
-    |west_info|west_port|8080|
-    ||pkt_count|4|
-    ||pkt_size_sum|432|
-    ||pkt_size_square_sum|52464|
-    ||pkt_size_min|66|
-    ||pkt_size_max|146|
-    ||payload_pkt_count|2|
-    ||payload_size_sum|160|
-    ||payload_size_square_sum|12800|
-    ||payload_size_min|80|
-    ||payload_size_max|80|
-    |syn|count|1|
-    |ack|count|1|
-    |syn ack|count|1|
-    |psh|count|0|
-    |psh ack|count|4|
-    |rst|count|0|
-    |rst ack|count|0|
-    |fin|count|0|
-    |fin ack|count|2|
-    |rt|count|1|
+    * sc3_tcp_flow_2.pcap
+      |category|info|value|
+      |--------|----|-----|
+      |ipv||4|
+      |protocol||6|
+      |east_info|
+      ||pkt_count|13|
+      ||pkt_size_sum|10616|
+      ||pkt_size_square_sum|12707248|
+      ||pkt_size_min|66|
+      ||pkt_size_max|1716|
+      ||payload_pkt_count|10|
+      ||payload_size_sum|9750|
+      ||payload_size_square_sum|11362500|
+      ||payload_size_min|300|
+      ||payload_size_max|1650|
+      |west_info|pkt_count|14|
+      ||pkt_size_sum|10716|
+      ||pkt_size_square_sum|12019512|
+      ||pkt_size_min|66|
+      ||pkt_size_max|1514|
+      ||payload_pkt_count|12|
+      ||payload_size_sum|9784|
+      ||payload_size_square_sum|10665920|
+      ||payload_size_min|56|
+      ||payload_size_max|1448|
+      |syn|count|1|
+      |ack|count|3|
+      |fin|count|2|
+      |syn-ack|count|1|
+      |psh-ack|count|20|
 
-  * flow 별 active timed 정보
+    * sc3_tcp_flow_3.pcap
+      |category|info|value|
+      |--------|----|-----|
+      |ipv||4|
+      |protocol||6|
+      |"east_info|
+      |"|pkt_count|18|
+      ||pkt_size_sum|21446|
+      ||pkt_size_square_sum|36390028|
+      ||pkt_size_min|66|
+      ||pkt_size_max|2466|
+      ||payload_pkt_count|15|
+      ||payload_size_sum|20250|
+      ||payload_size_square_sum|33637500|
+      ||payload_size_min|300|
+      ||payload_size_max|2400|
+      |west_info|pkt_count|24|
+      ||pkt_size_sum|21888|
+      ||pkt_size_square_sum|26301600|
+      ||pkt_size_min|66|
+      ||pkt_size_max|1514|
+      ||payload_pkt_count|22|
+      ||payload_size_sum|20296|
+      ||payload_size_square_sum|23516864|
+      ||payload_size_min|56|
+      ||payload_size_max|1448|
+      |syn|count|1|
+      |ack|count|8|
+      |fin|count|2|
+      |syn-ack|count|1|
+      |psh-ack|count|30|
+
+    * sc3_udp_flow_1.pcap
+      |category|info|value|
+      |--------|----|-----|
+      |ipv||4|
+      |protocol||17|
+      |east_info|
+      ||pkt_count|5|
+      ||pkt_size_sum|1715|
+      ||pkt_size_square_sum|588245|
+      ||pkt_size_min|343|
+      ||pkt_size_max|343|
+      ||payload_pkt_count|5|
+      ||payload_size_sum|1505|
+      ||payload_size_square_sum|453005|
+      ||payload_size_min|301|
+      ||payload_size_max|301|
+      |west_info|pkt_count|5|
+      ||pkt_size_sum|2100|
+      ||pkt_size_square_sum|891720|
+      ||pkt_size_min|384|
+      ||pkt_size_max|474|
+      ||payload_pkt_count|5|
+      ||payload_size_sum|1890|
+      ||payload_size_square_sum|724140|
+      ||payload_size_min|342|
+      ||payload_size_max|432|
+      |syn|count|0|
+      |ack|count|0|
+      |fin|count|0|
+      |syn-ack|count|0|
+      |psh-ack|count|0|
+
+    * sc3_udp_flow_2.pcap
+      |category|info|value|
+      |--------|----|-----|
+      |ipv||4|
+      |protocol||17|
+      |east_info|
+      ||pkt_count|10|
+      ||pkt_size_sum|2532|
+      ||pkt_size_square_sum|670300|
+      ||pkt_size_min|160|
+      ||pkt_size_max|350|
+      ||payload_pkt_count|10|
+      ||payload_size_sum|2112|
+      ||payload_size_square_sum|475252|
+      ||payload_size_min|118|
+      ||payload_size_max|308|
+      |west_info|pkt_count|10|
+      ||pkt_size_sum|4290|
+      ||pkt_size_square_sum|1860660|
+      ||pkt_size_min|384|
+      ||pkt_size_max|474|
+      ||payload_pkt_count|10|
+      ||payload_size_sum|3870|
+      ||payload_size_square_sum|1517940|
+      ||payload_size_min|342|
+      ||payload_size_max|432|
+      |syn|count|0|
+      |ack|count|0|
+      |fin|count|0|
+      |syn-ack|count|0|
+      |psh-ack|count|0|
+
+    * sc3_udp_flow_3.pcap
+      |category|info|value|
+      |--------|----|-----|
+      |ipv||4|
+      |protocol||17|
+      |east_info|
+      ||pkt_count|10|
+      ||pkt_size_sum|2532|
+      ||pkt_size_square_sum|670300|
+      ||pkt_size_min|160|
+      ||pkt_size_max|350|
+      ||payload_pkt_count|10|
+      ||payload_size_sum|2112|
+      ||payload_size_square_sum|475252|
+      ||payload_size_min|118|
+      ||payload_size_max|308|
+      |west_info|pkt_count|10|
+      ||pkt_size_sum|4290|
+      ||pkt_size_square_sum|1860660|
+      ||pkt_size_min|384|
+      ||pkt_size_max|474|
+      ||payload_pkt_count|10|
+      ||payload_size_sum|3870|
+      ||payload_size_square_sum|1517940|
+      ||payload_size_min|342|
+      ||payload_size_max|432|
+      |syn|count|0|
+      |ack|count|0|
+      |fin|count|0|
+      |syn-ack|count|0|
+      |psh-ack|count|0|    
+                
+  * flow 별 active time 정보
     
 ## 규격별 주요 검증 필드
 
