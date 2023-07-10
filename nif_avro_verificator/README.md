@@ -172,6 +172,16 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
         # * true : snappy로 압축된 kbell Avro 파일을 사용하는 경우
         # * false : snappy로 압축된 kbell Avro 파일을 사용하지 않는 경우
 
+        enable_etri_debug : true
+        # etri 데이터 프레임 레코드 전체 출력 옵션
+        # * true  : 레코드 전체 출력 On(데이터 프레임에 기록된 raw record 형태)
+        # * false : 레코드 전체 출력 Off
+      
+        enable_kbell_debug : true
+        # kbell 데이터 프레임 레코드 전체 출력 옵션
+        # * true  : 레코드 전체 출력 On(데이터 프레임에 기록된 raw record 형태)
+        # * false : 레코드 전체 출력 Off
+
       flow_raw_info :
         # 데이터 분석 설정
         # 종류 : flow_raw_info , flow_delta_info , flow_packet_info
