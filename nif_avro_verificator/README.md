@@ -8,7 +8,7 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
 ## 매뉴얼
 
 - 프로젝트 명
-  * nif_avro_verificater
+  * nif_avro_verifier
   
 - 개발환경
 
@@ -44,7 +44,7 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
     * 참고 
       * 소프트웨어 패키지 및 GO 설치경로는 아래의 경로에서 설치하는 것으로 가정하여 문서를 작성
      
-        * /home/kbell/nif_avro_verificater_install_path
+        * /home/kbell/nif_avro_verifier_install_path
       
     * Go Download(1.20.1)
       ```
@@ -61,41 +61,25 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
       ```
       $ pwd
       ######################################################################################################
-      /home/kbell/nif_avro_verificater_install_path
+      /home/kbell/nif_avro_verifier_install_path
       ######################################################################################################
     
       $ ls
       ######################################################################################################
-      go  nif_avro_verificater
+      go  nif_avro_verifier
       ######################################################################################################
       ```
    
     * 프로젝트 경로 설정
-      *  아래의 경로의 스크립트에서 GO 관련 경로로 맞춰주는 작업을 수행.
       ```
-      $ cd nif_avro_verificater/go_source/bin/
-      ```
-      
-        *  export PATH=$PATH:/home/kbell/nif_avro_verificater_install_path/go/bin/
-        *  export GOROOT=/home/kbell/nif_avro_verificater_install_path/go
-        *  export GOPATH=/home/kbell/nif_avro_verificater_install_path/go/pkg/go_path
-       
-      ```
-      * 참고 *
-      $ vi 0_create_go_mod.sh
+      $ vi ~/.profile
       ######################################################################################################
-      ... (중략)
-      #export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64/bin/
-      #export GOROOT=/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64
-      #export GOPATH=/home/esk1223/env_default_pkg/go/pkg/go_path
-      export PATH=$PATH:/home/kbell/nif_avro_verificater_install_path/go/bin/
-      export GOROOT=/home/kbell/nif_avro_verificater_install_path/go
-      export GOPATH=/home/kbell/nif_avro_verificater_install_path/go/pkg/go_path
-      ... (중략)
-      -->  위와 같이 0_get_gopkgs.sh , 1_src_run.sh , 2_bin_run.sh , 2_binary_build.sh 의 경로를 수정 후 저장
+      # 참고 ) go1.20.1 설치 경로에 맞게 경로 작업
+      export PATH=$PATH:/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64/bin/ 
+      export GOROOT=/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64
+      export GOPATH=/home/esk1223/env_default_pkg/go/pkg/go_path
       ######################################################################################################
-      
-      $ chmod 755 0_create_go_mod.sh 0_get_gopkgs.sh 1_src_run.sh 2_bin_run.sh 2_bin_run_background.sh 2_binary_build.sh
+      $ source ~/.profile
       ```
       
     *  GO mod init 및 get pkgs
@@ -104,10 +88,10 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
        ######################################################################################################
        ========================================================
        Project Path >>
-       : /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source
+       : /home/kbell/nif_avro_verifier_install_path/nif_avro_verifier/go_source
        ========================================================
        Clean module >>
-       file :  /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source/src/go.mod
+       file :  /home/kbell/nif_avro_verifier_install_path/nif_avro_verifier/go_source/src/go.mod
        ========================================================
        Create module init(kbell) >>
        go: creating new go.mod: module kbell
@@ -115,18 +99,18 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
                go mod tidy
        ========================================================
        module show >>
-       file :  /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source/src/go.mod
+       file :  /home/kbell/nif_avro_verifier_install_path/nif_avro_verifier/go_source/src/go.mod
        module kbell
 
        go 1.20
        ========================================================
        ========================================================
        Project Path >>
-       : /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source
+       : /home/kbell/nif_avro_verifier_install_path/nif_avro_verifier/go_source
        GOROOT >>
-       : /home/kbell/nif_avro_verificater_install_path/go
+       : /home/kbell/nif_avro_verifier_install_path/go
        GOPATH >>
-       : /home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/go_source
+       : /home/kbell/nif_avro_verifier_install_path/nif_avro_verifier/go_source
        ========================================================
        Proejct Go Run (ver. interpreter) >>
        go: finding module for package github.com/hamba/avro/ocf
@@ -141,7 +125,7 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
  
     * config 설정
       ```
-      $ cd nif_avro_verificater/go_source/config
+      $ cd nif_avro_verifier/go_source/config
       ######################################################################################################
       ├─ config.yaml : 프로그램 실행 시 사용되는 config 파일
       ├─ config_flow_delta.yaml : Flow 델타 데이터 분석 시 사용하는 config 파일 예시
@@ -189,10 +173,10 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
         # * flow_delta_info : 플로우 단위시간 원시 데이터 분석 설정 옵션
         # * flow_packet_info : 플로우 패킷 원시 데이터 분석 설정 옵션
 
-        etri_avro_dir_path: "/home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/avro_data/flow_raw/e_data"
+        etri_avro_dir_path: "/home/kbell/nif_avro_verifier_install_path/nif_avro_verifier/avro_data/flow_raw/e_data"
         # ETRI Avro 파일 경로 (절대경로 , 서브디렉토리 기능 지원)
 
-        kbell_avro_dir_path: "/home/kbell/nif_avro_verificater_install_path/nif_avro_verificater/avro_data/flow_raw/k_data"
+        kbell_avro_dir_path: "/home/kbell/nif_avro_verifier_install_path/nif_avro_verifier/avro_data/flow_raw/k_data"
         # Kbell Avro 파일 경로 (절대경로 , 서브디렉토리 기능 지원)
 
         flow_cond_option :
@@ -249,13 +233,13 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
       
       *  인터프리터 방식
       ```
-      $ cd nif_avro_verificater/go_source/bin/
+      $ cd nif_avro_verifier/go_source/bin/
       $ ./1_src_run.sh
       ```
       
       * 컴파일러 방식
       ```
-      $ cd nif_avro_verificater/go_source/bin/
+      $ cd nif_avro_verifier/go_source/bin/
       
       # 소스 빌드
       $ ./2_binary_build.sh
@@ -277,7 +261,7 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
         * flow_packet : flow_packet_$unix_time_stamp(동작종료시간).log
 
        ```
-       $ cd nif_avro_verificater/go_source/logs 
+       $ cd nif_avro_verifier/go_source/logs 
        ```
       
       * 결과데이터 설명
