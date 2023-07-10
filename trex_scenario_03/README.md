@@ -323,10 +323,17 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
        * --dport : dst port
        * --s_delay_sec : 서버 딜레이 명령
        * --ipv6_mode : ip range를 ipv6로 변
+
+  *  trex 실행
+  ```
+  # 참고) 새로운 터미널을 연 후 실행
+  $ /opt/trex/v3.xx
+  $ sudo ./t-rex-64 -i --astf
+  ```
      
   *  실행
   ```
-  $ cd scen_01
+  $ cd scen_03
   $ ./_run_scen.sh
   ```
 
