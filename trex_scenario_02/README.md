@@ -119,6 +119,13 @@ udp 트래픽 기반 주요 데이터 규격 검증
        * --rampup_sec : 스케줄러 상승 시간(초)
        * --cps : connection per second
        * --dport : dst port
+
+  *  trex 실행
+  ```
+  # 참고) 새로운 터미널을 연 후 실행
+  $ /opt/trex/v3.xx
+  $ sudo ./t-rex-64 -i --astf
+  ```
                
   *  실행
   ```
