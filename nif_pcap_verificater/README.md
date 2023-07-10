@@ -35,7 +35,6 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
      
         * /home/kbell/nif_pcap_verificater_install_path
 
-      
     * Go Download(1.20.1)
       ```
       $ wget https://go.dev/dl/go1.20.1.linux-amd64.tar.gz;
@@ -61,35 +60,27 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
       ```
    
     * 프로젝트 경로 설정
+      
       *  아래의 경로의 스크립트에서 GO 관련 경로로 맞춰주는 작업을 수행.
+      $ vi ~/.bashrc
       ```
-      $ cd nif_pcap_verificater/go_source/bin/
-      ```
-      
-        *  export PATH=$PATH:/home/kbell/nif_pcap_verificater_install_path/go/bin/
-        *  export GOROOT=/home/kbell/nif_pcap_verificater_install_path/go
-        *  export GOPATH=/home/kbell/nif_pcap_verificater_install_path/go/pkg/go_path
-       
-      ```
-      * 참고 *
-      $ vi 0_create_go_mod.sh
       ######################################################################################################
-      ... (중략)
-      #export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64/bin/
-      #export GOROOT=/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64
-      #export GOPATH=/home/esk1223/env_default_pkg/go/pkg/go_path
-      export PATH=$PATH:/home/kbell/nif_pcap_verificater_install_path/go/bin/
-      export GOROOT=/home/kbell/nif_pcap_verificater_install_path/go
-      export GOPATH=/home/kbell/nif_pcap_verificater_install_path/go/pkg/go_path
-      ... (중략)
-      -->  위와 같이 0_get_gopkgs.sh , 1_src_run.sh , 2_bin_run.sh , 2_binary_build.sh 의 경로를 수정 후 저장
+      export PATH=$PATH:/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64/bin/ 
+      export GOROOT=/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64
+      export GOPATH=/home/esk1223/env_default_pkg/go/pkg/go_path
       ######################################################################################################
-      
-      $ chmod 755 0_create_go_mod.sh 0_get_gopkgs.sh 1_src_run.sh 2_bin_run.sh 2_bin_run_background.sh 2_binary_build.sh
+      $ source ~/.bashrc
       ```
       
-    *  GO mod init 및 get pkgs
+    *   libpcap-dev 설치
+ 
+      * github.com/google/gopacket/pcap 사용을 위한 libpcap-dev 설치
+      ```
+      # sudo apt install -y libpcap-dev
+      ```
     
+    *   GO mod init 및 get pkgs  
+       
        ```
        $ ./0_create_go_mod.sh
        ######################################################################################################
