@@ -106,6 +106,7 @@ tcp 트래픽  기반 주요 데이터 규격 검증
     ```
 
   * 탬플릿 기반 트래픽 생성 스트립트 설명
+    
     * 구동 예시
       *  trex> start -f $py_dir/scenario_astf.py -m 1 -d 100 -t pcap_file=flow_1.pcap|flow_1.pcap,rexmtthresh=x,no_delay=x,no_delay_counter=x,initwnd=x,rampup_sec=x,cps=x,dport=x
         
@@ -119,7 +120,14 @@ tcp 트래픽  기반 주요 데이터 규격 검증
        * --rampup_sec : 스케줄러 상승 시간(초)
        * --cps : connection per second
        * --dport : dst port
-     
+         
+  *  trex 실행
+  ```
+  # 참고) 새로운 터미널을 연 후 실행
+  $ /opt/trex/v3.xx
+  $ sudo ./t-rex-64 -i --astf
+  ```
+
   *  실행
   ```
   $ cd scen_01
