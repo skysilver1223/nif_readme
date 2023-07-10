@@ -98,27 +98,27 @@
        검증용 Avro파일 생성 프로그램의 분석용 디렉토리 확인방법
        - 검증용 Avro파일 생성 프로그램의 Config 파일의 project_info.pcap_file_dir_path 경로 확인
        
-       # vi $current_nif_project/nif_pcap_verificater/go_source/config/config.yaml
+       # vi $current_nif_project/nif_pcap_verifier/go_source/config/config.yaml
        -------------------------------------------------------------------------------------------------------  
        project_info :
        ...     
-         pcap_file_dir_path: "$current_nif_project/nif_pcap_verificater/pcap_samples"
+         pcap_file_dir_path: "$current_nif_project/nif_pcap_verifier/pcap_samples"
          # 분석대상 pcap 디렉토리
        ...
        -------------------------------------------------------------------------------------------------------
 
-       # mv $res_pcap_file_name $current_nif_project/nif_pcap_verificater/pcap_samples
+       # mv $res_pcap_file_name $current_nif_project/nif_pcap_verifier/pcap_samples
        ```
        
    * 2-2) 트래픽 파일(Pcap)에 대한 분석을 위한 Config를 설정
      ```
-     # vi $current_nif_project/nif_pcap_verificater/go_source/config/config.yaml
+     # vi $current_nif_project/nif_pcap_verifier/go_source/config/config.yaml
      -------------------------------------------------------------------------------------------------------
      project_info :
-       res_file_dir_path: "$current_nif_project/nif_pcap_verificater/pcap_results"
+       res_file_dir_path: "$current_nif_project/nif_pcap_verifier/pcap_results"
        # pcap 분석 결과 생성 디렉토리
      
-       pcap_file_dir_path: "$current_nif_project/nif_pcap_verificater/pcap_samples"
+       pcap_file_dir_path: "$current_nif_project/nif_pcap_verifier/pcap_samples"
        # 분석대상 pcap 디렉토리
      
        enable_snappy : false
@@ -163,7 +163,7 @@
      
    * 2-3) 검증용 Avro파일 생성 프로그램을 구동하여 검증용 결과물 생성
      ```
-     # cd $current_nif_project/nif_pcap_verificater/go_source/bin
+     # cd $current_nif_project/nif_pcap_verifier/go_source/bin
      # ./1_src_run.sh
      ```
 
@@ -173,16 +173,16 @@
      검증용 Avro파일 생성 프로그램의 결과용 디렉토리 확인방법
      - 검증용 Avro파일 생성 프로그램의 Config 파일의 project_info.res_file_dir_path 경로 확인
        
-     # vi $current_nif_project/nif_pcap_verificater/go_source/config/config.yaml
+     # vi $current_nif_project/nif_pcap_verifier/go_source/config/config.yaml
      -------------------------------------------------------------------------------------------------------  
      project_info :
      ...     
-       res_file_dir_path: "$current_nif_project/nif_pcap_verificater/pcap_results"
+       res_file_dir_path: "$current_nif_project/nif_pcap_verifier/pcap_results"
        # pcap 분석 결과 생성 디렉토리
      ...
      -------------------------------------------------------------------------------------------------------
      
-     # cd $current_nif_project/nif_pcap_verificater/pcap_results
+     # cd $current_nif_project/nif_pcap_verifier/pcap_results
      # ls -al
      -------------------------------------------------------------------------------------------------------
      kb-d--$res_pcap_file_name--$delta_index.avro
@@ -206,22 +206,22 @@
    
    * 3-1)  검증용 Avro(Kbell 규격)을 데이터 정확성 검증 프로그램으로 이동
      ```
-     # cd $current_nif_project/nif_pcap_verificater/pcap_results
-     # mv kb_r-* $current_nif_project/nif_avro_verificater/avro_data/flow_raw/k_data/
-     # mv kb_d-* $current_nif_project/nif_avro_verificater/avro_data/flow_delta/k_data/
-     # mv kb_p-* $current_nif_project/nif_avro_verificater/avro_data/flow_packet/k_data/
+     # cd $current_nif_project/nif_pcap_verifier/pcap_results
+     # mv kb_r-* $current_nif_project/nif_avro_verifier/avro_data/flow_raw/k_data/
+     # mv kb_d-* $current_nif_project/nif_avro_verifier/avro_data/flow_delta/k_data/
+     # mv kb_p-* $current_nif_project/nif_avro_verifier/avro_data/flow_packet/k_data/
      ```
        
    * 3-2) 분석 Avro(ETRI 규격)을 데이터 정확성 검증 프로그램으로 이동
      ```
-     # mv (avro_file or avro_dir) $current_nif_project/nif_avro_verificater/avro_data/flow_raw/e_data/
-     # mv (avro_file or avro_dir) $current_nif_project/nif_avro_verificater/avro_data/flow_delta/e_data/
-     # mv (avro_file or avro_dir) $current_nif_project/nif_avro_verificater/avro_data/flow_packet/e_data/
+     # mv (avro_file or avro_dir) $current_nif_project/nif_avro_verifier/avro_data/flow_raw/e_data/
+     # mv (avro_file or avro_dir) $current_nif_project/nif_avro_verifier/avro_data/flow_delta/e_data/
+     # mv (avro_file or avro_dir) $current_nif_project/nif_avro_verifier/avro_data/flow_packet/e_data/
      ```
      
    * 3-3) 데이터 정확성 검증 프로그램의 Config를 분석 데이터 타입에 맞게 설정
      ```
-     # vi $current_nif_project/nif_avro_verificater/go_source/config/config.yaml
+     # vi $current_nif_project/nif_avro_verifier/go_source/config/config.yaml
      ```
      * 3-3-1) 플로우 원시 데이터 설정 예시
        ```
@@ -253,10 +253,10 @@
          # * flow_delta_info : 플로우 단위시간 원시 데이터 분석 설정 옵션
          # * flow_packet_info : 플로우 패킷 원시 데이터 분석 설정 옵션
        
-         etri_avro_dir_path: "$current_nif_project/nif_avro_verificater/avro_data/flow_raw/e_data"
+         etri_avro_dir_path: "$current_nif_project/nif_avro_verifier/avro_data/flow_raw/e_data"
          # ETRI Avro 파일 경로 (절대경로 , 서브디렉토리 기능 지원)
          
-         kbell_avro_dir_path: "$current_nif_project/nif_avro_verificater/avro_data/flow_raw/k_data"
+         kbell_avro_dir_path: "$current_nif_project/nif_avro_verifier/avro_data/flow_raw/k_data"
          # Kbell Avro 파일 경로 (절대경로 , 서브디렉토리 기능 지원)
        
          flow_cond_option :
@@ -339,10 +339,10 @@
          # * flow_delta_info : 플로우 단위시간 원시 데이터 분석 설정 옵션
          # * flow_packet_info : 플로우 패킷 원시 데이터 분석 설정 옵션
        
-         etri_avro_dir_path: "$current_nif_project/nif_avro_verificater/avro_data/flow_delta/e_data"
+         etri_avro_dir_path: "$current_nif_project/nif_avro_verifier/avro_data/flow_delta/e_data"
          # ETRI Avro 파일 경로 (절대경로 , 서브디렉토리 기능 지원)
        
-         kbell_avro_dir_path: "$current_nif_project/nif_avro_verificater/avro_data/flow_delta/k_data"
+         kbell_avro_dir_path: "$current_nif_project/nif_avro_verifier/avro_data/flow_delta/k_data"
          # Kbell Avro 파일 경로 (절대경로 , 서브디렉토리 기능 지원)
        
          flow_cond_option :
@@ -424,10 +424,10 @@
          # * flow_delta_info : 플로우 단위시간 원시 데이터 분석 설정 옵션
          # * flow_packet_info : 플로우 패킷 원시 데이터 분석 설정 옵션
 
-         etri_avro_dir_path: "$current_nif_project/nif_avro_verificater/avro_data/flow_packet/e_data"
+         etri_avro_dir_path: "$current_nif_project/nif_avro_verifier/avro_data/flow_packet/e_data"
          # ETRI Avro 파일 경로 (절대경로 , 서브디렉토리 기능 지원)
          
-         kbell_avro_dir_path: "$current_nif_project/nif_avro_verificater/avro_data/flow_packet/k_data"
+         kbell_avro_dir_path: "$current_nif_project/nif_avro_verifier/avro_data/flow_packet/k_data"
          # Kbell Avro 파일 경로 (절대경로 , 서브디렉토리 기능 지원)  
        
          flow_cond_option :
@@ -482,7 +482,7 @@
      
    * 3-4) 데이터 정확성 검증 프로그램 구동하여 분석결과 생성
      ```
-     # cd $current_nif_project/nif_avro_verificater/go_source/bin
+     # cd $current_nif_project/nif_avro_verifier/go_source/bin
      # ./1_src_run.sh
      -------------------------------------------------------------------------------------------------------
      ...
@@ -495,6 +495,6 @@
 
    * 3-5) 분석결과 확인
      ```
-     # cd $current_nif_project/nif_avro_verificater/go_source/logs
+     # cd $current_nif_project/nif_avro_verifier/go_source/logs
      # vi $res_file.log     <<<<<<<< 3-4) 절차의 분석결과 확인 파일명
      ```
