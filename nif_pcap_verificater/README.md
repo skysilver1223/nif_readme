@@ -6,7 +6,7 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
 ## 매뉴얼
 
 - 프로젝트 명
-  * nif_pcap_verificater
+  * nif_pcap_verifier
   
 - 개발환경
 
@@ -33,7 +33,7 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
  - 참고
   - 소프트웨어 패키지 및 GO 설치경로는 아래의 경로에서 설치하는 것으로 가정하여 문서를 작성
     
-    -  /home/kbell/nif_pcap_verificater_install_path
+    -  /home/kbell/nif_pcap_verifier_install_path
       
   -   Go Download(1.20.1)
       ```
@@ -50,12 +50,12 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
       ```
       $ pwd
       ######################################################################################################
-      /home/kbell/nif_pcap_verificater_install_path
+      /home/kbell/nif_pcap_verifier_install_path
       ######################################################################################################
     
       $ ls
       ######################################################################################################
-      go  nif_pcap_verificater
+      go  nif_pcap_verifier
       ######################################################################################################
       ```
 
@@ -83,10 +83,10 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
       ######################################################################################################
       ========================================================
       Project Path >>
-      : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
+      : /home/kbell/nif_pcap_verifier_install_path/nif_pcap_verifier/go_source
       ========================================================
       Clean module >>
-      file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
+      file :  /home/kbell/nif_pcap_verifier_install_path/nif_pcap_verifier/go_source/src/go.mod
       ========================================================
       Create module init(kbell) >>
       go: creating new go.mod: module kbell
@@ -94,17 +94,17 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
               go mod tidy
       ========================================================
       module show >>
-      file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
+      file :  /home/kbell/nif_pcap_verifier_install_path/nif_pcap_verifier/go_source/src/go.mod
       module kbell
        go 1.20
       ========================================================
       ========================================================
       Project Path >>
-      : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
+      : /home/kbell/nif_pcap_verifier_install_path/nif_pcap_verifier/go_source
       GOROOT >>
-      : /home/kbell/nif_pcap_verificater_install_path/go
+      : /home/kbell/nif_pcap_verifier_install_path/go
       GOPATH >>
-      : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
+      : /home/kbell/nif_pcap_verifier_install_path/nif_pcap_verifier/go_source
       ========================================================
       Proejct Go Run (ver. interpreter) >>
       go: finding module for package github.com/golang/snappy
@@ -119,17 +119,17 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
  
      * config 설정
        ```
-       $ cd nif_pcap_verificater/go_source/config
+       $ cd nif_pcap_verifier/go_source/config
        ```
        
       * config 옵션 상세
         ```
         project_info :
 
-          res_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verificater/pcap_results"
+          res_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verifier/pcap_results"
           # pcap 분석 결과 생성 디렉토리
 
-          pcap_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verificater/pcap_samples"
+          pcap_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verifier/pcap_samples"
           # 분석대상 pcap 디렉토리
 
           enable_snappy : false
@@ -184,13 +184,13 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
 
        *  인터프리터 방식
        ```
-       $ cd nif_pcap_verificater/go_source/bin/
+       $ cd nif_pcap_verifier/go_source/bin/
        $ ./1_src_run.sh
        ```
 
        * 컴파일러 방식
        ```
-       $ cd nif_pcap_verificater/go_source/bin/
+       $ cd nif_pcap_verifier/go_source/bin/
 
        # 소스 빌드
        $ ./2_binary_build.sh
