@@ -29,24 +29,24 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
   ```
   
 - 설치 및 실행
-
-    * 참고 
-      * 소프트웨어 패키지 및 GO 설치경로는 아래의 경로에서 설치하는 것으로 가정하여 문서를 작성
-     
-        * /home/kbell/nif_pcap_verificater_install_path
-
-    * Go Download(1.20.1)
+  
+ - 참고
+  - 소프트웨어 패키지 및 GO 설치경로는 아래의 경로에서 설치하는 것으로 가정하여 문서를 작성
+    
+    -  /home/kbell/nif_pcap_verificater_install_path
+      
+  -   Go Download(1.20.1)
       ```
       $ wget https://go.dev/dl/go1.20.1.linux-amd64.tar.gz;
       $ tar -zxvf go1.20.1.linux-amd64.tar.gz;
       $ cd go/bin;
       $ ./go version;
-        ######################################################################################################
-        go version go1.20.1 linux/amd64
-        ######################################################################################################
+      ######################################################################################################
+      go version go1.20.1 linux/amd64
+      ######################################################################################################
       ```
-      
-    * 작업 디렉토리 구성 
+
+  -   작업 디렉토리 구성
       ```
       $ pwd
       ######################################################################################################
@@ -58,66 +58,62 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
       go  nif_pcap_verificater
       ######################################################################################################
       ```
-   
-    * 프로젝트 경로 설정
-      
-      *  아래의 경로의 스크립트에서 GO 관련 경로로 맞춰주는 작업을 수행.
-      $ vi ~/.bashrc
+
+  -   프로젝트 경로 설정 (공통)
       ```
+      $ vi ~/.profile
       ######################################################################################################
+      # 참고 ) go1.20.1 설치 경로에 맞게 경로 작업
       export PATH=$PATH:/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64/bin/ 
       export GOROOT=/home/esk1223/env_default_pkg/go/pkg/go1.20.1.linux-amd64
       export GOPATH=/home/esk1223/env_default_pkg/go/pkg/go_path
       ######################################################################################################
-      $ source ~/.bashrc
+      $ source ~/.profile
       ```
-      
-    *   libpcap-dev 설치
- 
-      * github.com/google/gopacket/pcap 사용을 위한 libpcap-dev 설치
+
+  -   libpcap-dev 설치      
       ```
+      # 참고 ) github.com/google/gopacket/pcap 사용을 위한 libpcap-dev 설치
       # sudo apt install -y libpcap-dev
       ```
-    
-    *   GO mod init 및 get pkgs  
-       
-       ```
-       $ ./0_create_go_mod.sh
-       ######################################################################################################
-       ========================================================
-       Project Path >>
-       : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
-       ========================================================
-       Clean module >>
-       file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
-       ========================================================
-       Create module init(kbell) >>
-       go: creating new go.mod: module kbell
-       go: to add module requirements and sums:
-               go mod tidy
-       ========================================================
-       module show >>
-       file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
-       module kbell
 
+  -   GO mod init 및 get pkgs     
+      ```
+      $ ./0_create_go_mod.sh
+      ######################################################################################################
+      ========================================================
+      Project Path >>
+      : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
+      ========================================================
+      Clean module >>
+      file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
+      ========================================================
+      Create module init(kbell) >>
+      go: creating new go.mod: module kbell
+      go: to add module requirements and sums:
+              go mod tidy
+      ========================================================
+      module show >>
+      file :  /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source/src/go.mod
+      module kbell
        go 1.20
-       ========================================================
-       ========================================================
-       Project Path >>
-       : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
-       GOROOT >>
-       : /home/kbell/nif_pcap_verificater_install_path/go
-       GOPATH >>
-       : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
-       ========================================================
-       Proejct Go Run (ver. interpreter) >>
-       go: finding module for package github.com/golang/snappy
-       go: finding module for package gopkg.in/natefinch/lumberjack.v2
-       ... (생략)
-       go: added github.com/elodina/go-avro v0.0.0-20160406082632-0c8185d9a3ba
-       ######################################################################################################
-       --> 0_create_go_mod.sh 에서 mod init 완료 후 0_get_gopkgs.sh를 수행하여 관련 패키지를 가져온다.
-       ```
+      ========================================================
+      ========================================================
+      Project Path >>
+      : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
+      GOROOT >>
+      : /home/kbell/nif_pcap_verificater_install_path/go
+      GOPATH >>
+      : /home/kbell/nif_pcap_verificater_install_path/nif_pcap_verificater/go_source
+      ========================================================
+      Proejct Go Run (ver. interpreter) >>
+      go: finding module for package github.com/golang/snappy
+      go: finding module for package gopkg.in/natefinch/lumberjack.v2
+      ... (생략)
+      go: added github.com/elodina/go-avro v0.0.0-20160406082632-0c8185d9a3ba
+      ######################################################################################################
+      --> 0_create_go_mod.sh 에서 mod init 완료 후 0_get_gopkgs.sh를 수행하여 관련 패키지를 가져온다.
+      ```
  
    - 설정 및 실행
  
@@ -125,6 +121,7 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
        ```
        $ cd nif_pcap_verificater/go_source/config
        ```
+       
       * config 옵션 상세
         ```
         project_info :
