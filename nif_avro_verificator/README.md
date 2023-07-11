@@ -84,6 +84,8 @@ ETRI 규격(Flow , Delta , Packet) AVRO와 KBELL 규격(Flow , Delta , Packet) A
       
     *  GO mod init 및 get pkgs
        ```
+       $ cd go_source/bin
+       $ chmod 755 *.sh
        $ ./0_create_go_mod.sh
        ######################################################################################################
        ========================================================
