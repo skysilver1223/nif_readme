@@ -318,11 +318,11 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
        * --delay_ack_msec : 지연 확인 시간 초과(msec)
        * --no_delay_counter : ack이 전송될 때까지 기다리는 recv 바이트 수입니다.
        * --initwnd : init window 값(MSS 단위)
-       * --rampup_sec : 스케줄러 상승 시간(초)
+       * --rampup_sec : 스케줄러 상승 시간(초) , 해당 시간이 지나면 처리량이 최대치로 적용, 1초마다 선형적으로 증가
        * --cps : connection per second
        * --dport : dst port
-       * --s_delay_sec : 서버 딜레이 명령
-       * --ipv6_mode : ip range를 ipv6로 변
+       * --s_delay_sec : 응답을 클라이언트로 다시 보내기 전 서버 딜레이(내부적으로 초단위로 변환하여 적용, 모든 pcap 템플릿에 일괄 적
+       * --ipv6_mode : ip range를 ipv6로 변경(소스 상의 ipv6.src_msb , ipv6.dst_msb 기반으로 주소를 변경하여 트래픽 생성)
 
   *  trex 실행
   ```
