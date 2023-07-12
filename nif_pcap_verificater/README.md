@@ -128,8 +128,17 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
         ```
         project_info :
 
-          res_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verifier/pcap_results"
-          # pcap 분석 결과 생성 디렉토리
+          res_flow_raw_dir_path : "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verifier/pcap_results/flow"
+          # 플로우 원시데이터 결과 저장 디렉토리
+        
+          res_flow_delta_dir_path : "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verifier/pcap_results/delta"
+          # 플로우 단위시간 데이터 결과 저장 디렉토리
+        
+          res_flow_packet_dir_path : "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verifier/pcap_results/packet"
+          # 플로우 패킷 데이터 결과 저장 디렉토리
+        
+          pcap_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verifier/pcap_samples"
+          # 분석대상 pcap 디렉토리
 
           pcap_file_dir_path: "/home/esk1223/project_mng_dir/029_NIF_DATA_VERIFICATION/current_nif_project/nif_pcap_verifier/pcap_samples"
           # 분석대상 pcap 디렉토리
@@ -163,9 +172,9 @@ Pcap File 기반 Kbell 규격(Flow , Delta , Packet) AVRO 파일을 생성하는
             #delta 조건(s)
 
             enable_multi_pcap_flow : true
-            #다중 pcap 사용관리 옵션
-            # * true  : pcap_list_info의 pcap을 여러개의 별도 pcap으로 인식
-            # * false : pcap_list_info의 pcap을 단일 pcap으로 인식
+            #다중 pcap 파일 처리 옵션
+            # * true  : pcap_list_info의 pcap 파일 각각을 별도의 입력으로 보고 pcap 파일마다 별도의 avro 파일 셋을 생성
+            # * false : pcap_list_info의 pcap 파일 전체를 순차적으로 연결된 하나의 pcap 입력으로 보고 하나의 avro 파일 셋을 생성
 
         pcap_list_info :
 
