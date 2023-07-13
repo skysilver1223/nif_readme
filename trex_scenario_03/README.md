@@ -202,7 +202,7 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
   * flow 별 active time 정보
     * sc3_tcp_flow_1.pcap
     
-      |s_delay_sec|flow active time(sec)|
+      |s_delay_usec|flow active time(sec)|
       |-----------|---------------------|
       |10|5|
       |20|10|
@@ -210,7 +210,7 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
 
     * sc3_tcp_flow_2.pcap
       
-      |s_delay_sec|flow active time(sec)|
+      |s_delay_usec|flow active time(sec)|
       |-----------|---------------------|
       |10|10|
       |20|20|
@@ -218,7 +218,7 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
       
     * sc3_tcp_flow_3.pcap
       
-      |s_delay_sec|flow active time(sec)|
+      |s_delay_usec|flow active time(sec)|
       |-----------|---------------------|
       |10|15|
       |20|30|
@@ -226,21 +226,21 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
       
     * sc3_udp_flow_1.pcap
       
-      |s_delay_sec|flow active time(sec)|
+      |s_delay_usec|flow active time(sec)|
       |-----------|---------------------|
       |10|5|
       |20|10| 
       |40|20|
 
     * sc3_udp_flow_2.pcap      
-      |s_delay_sec|flow active time(sec)|
+      |s_delay_usec|flow active time(sec)|
       |-----------|---------------------|
       |10|10|
       |20|20|
       |40|40|     
       
     * sc3_udp_flow_3.pcap      
-      |s_delay_sec|flow active time(sec)|
+      |s_delay_usec|flow active time(sec)|
       |-----------|---------------------|
       |10|15|
       |20|30|
@@ -321,7 +321,7 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
        * --rampup_sec : 스케줄러 상승 시간(초) , 해당 시간이 지나면 처리량이 최대치로 적용, 1초마다 선형적으로 증가
        * --cps : connection per second
        * --dport : dst port
-       * --s_delay_sec : 응답을 클라이언트로 다시 보내기 전 서버 딜레이(내부적으로 초단위로 변환하여 적용, 모든 pcap 템플릿에 일괄 적
+       * --s_delay_usec : 응답을 클라이언트로 다시 보내기 전 서버 딜레이(내부적으로 초단위로 변환하여 적용, 모든 pcap 템플릿에 일괄 적
        * --ipv6_mode : ip range를 ipv6로 변경(소스 상의 ipv6.src_msb , ipv6.dst_msb 기반으로 주소를 변경하여 트래픽 생성)
 
   *  trex 실행
@@ -350,12 +350,12 @@ tcp/udp 트래픽 기반 주요 데이터 규격 검증
   ==================================================================
   
   Executing line 1 : 'reset'
-  Executing line 2 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 305 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_tcp_flow_1.pcap",cps=1,s_delay_sec=10,dport=8081'
-  Executing line 3 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 304 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_tcp_flow_2.pcap",cps=1,s_delay_sec=10,dport=8082'
-  Executing line 4 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 303 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_tcp_flow_3.pcap",cps=1,s_delay_sec=10,dport=8083'
-  Executing line 5 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 302 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_udp_flow_1.pcap",cps=1,s_delay_sec=10,dport=8084'
-  Executing line 6 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 301 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_udp_flow_2.pcap",cps=1,s_delay_sec=10,dport=8085'
-  Executing line 7 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 300 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_udp_flow_3.pcap",cps=1,s_delay_sec=10,dport=8086'
+  Executing line 2 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 305 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_tcp_flow_1.pcap",cps=1,s_delay_usec=10,dport=8081'
+  Executing line 3 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 304 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_tcp_flow_2.pcap",cps=1,s_delay_usec=10,dport=8082'
+  Executing line 4 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 303 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_tcp_flow_3.pcap",cps=1,s_delay_usec=10,dport=8083'
+  Executing line 5 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 302 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_udp_flow_1.pcap",cps=1,s_delay_usec=10,dport=8084'
+  Executing line 6 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 301 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_udp_flow_2.pcap",cps=1,s_delay_usec=10,dport=8085'
+  Executing line 7 : 'start -f /home/kbell/src_kbell/scen_03/py/scenario_astf.py -m 1 -d 100 --pid 300 -t pcap_file="/home/kbell/src_kbell/scen_03/template/sc3_udp_flow_3.pcap",cps=1,s_delay_usec=10,dport=8086'
   Executing line 8 : 'quit'
   Batch Running... |
   
